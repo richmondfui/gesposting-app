@@ -36,6 +36,12 @@
                                             id="schoolName" placeholder="Gomoa School" type="text" class="form-control"
                                             required></div>
                                 </div>
+                                <div class="position-relative row form-group"><label for="schoolHeadteacher"
+                                        class="col-sm-2 col-form-label">Headteacher's Name</label>
+                                    <div class="col-sm-10"><input name="headteacher" value="{{old('headteacher',$school->headteacher)}}" id="schoolHeadteacher"
+                                            placeholder="Mr. Asante Bismark" type="text" class="form-control" required>
+                                    </div>
+                                </div>
                                 <div class="position-relative row form-group"><label for="schoolDistID"
                                         class="col-sm-2 col-form-label">District</label>
                                     <div class="col-sm-10">

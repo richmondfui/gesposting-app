@@ -9,10 +9,10 @@
                     <h5 class="card-title text-center">LOGIN</h5>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        
+
                         <div class="position-relative form-group my-3"><label for="exampleEmail"
                                 class="">Email</label><input name="email" id="exampleEmail"
-                                placeholder="Enter your email..." type="email"
+                                placeholder="Enter your email..." type="email" value="{{ old('email') }}"
                                 class="form-control @error('email') is-invalid @enderror" required autocomplete="email">
 
                             @error('email')

@@ -40,7 +40,6 @@ class RoleController extends Controller
      */
     public function store(Request $request, Role $role)
     {
-        // dd($request->all());
         $role->name = $request->name;
         $role->description = $request->description;
         $role->save();
@@ -48,17 +47,6 @@ class RoleController extends Controller
         $role->permissions()->sync($request->permission_id);
 
         return redirect('admin/roles')->withStatus('Role created successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Role $role)
-    {
-        //
     }
 
     /**

@@ -36,7 +36,7 @@
                 <div class="col-md-7 text-center">
                    @if (session('status'))
                    <div class="alert alert-success">
-                        {{ session('status') }}
+                        {!! session('status') !!}
                     </div>
                    @endif
                 </div>

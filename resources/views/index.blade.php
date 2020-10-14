@@ -131,7 +131,7 @@
                                                 <span class="mx-1">/</span>
                                                 <a href="#">Admission</a>, <a href="#">Updates</a>
                                             </div>
-                                            <h3 class="post-heading"><a href="news-single.html">President Promises One Hot Meal for all Pre-tertiary Schools</a></h3>
+                                            <h3 class="post-heading"><a href="news-single.html">President promises one hot meal for all BECE candidates and teachers</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@
                                                 <span class="mx-1">/</span>
                                                 <a href="#">Admission</a>, <a href="#">Updates</a>
                                             </div>
-                                            <h3 class="post-heading"><a href="news-single.html">President Promises One Hot Meal for all Pre-tertiary Schools</a></h3>
+                                            <h3 class="post-heading"><a href="news-single.html">President promises one hot meal for all BECE candidates and teachers</a></h3>
                                         </div>
                                     </div>
 
@@ -158,7 +158,7 @@
                                                 <span class="mx-1">/</span>
                                                 <a href="#">Admission</a>, <a href="#">Updates</a>
                                             </div>
-                                            <h3 class="post-heading"><a href="news-single.html">President Promises One Hot Meal for all Pre-tertiary Schools</a></h3>
+                                            <h3 class="post-heading"><a href="news-single.html">President promises one hot meal for all BECE candidates and teachers</a></h3>
                                         </div>
                                     </div>
                                 </div>

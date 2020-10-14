@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class, "permission_user");
+    }
+
       // ACL Methods
     public function hasAnyRoles($roles)
     {

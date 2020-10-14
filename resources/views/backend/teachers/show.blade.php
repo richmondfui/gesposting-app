@@ -132,19 +132,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach($files as $file) --}}
+                            @if($teacher->school)
                             <tr>
                                 <td class="text-center text-muted">1</td>
                                 <td class="">Appointment letter</td>
                                 <td class="text-center">
 
-                                    <button type="button" id="" class="btn btn-primary btn-sm"
-                                        onclick="">View</button>
-                                    <button type="button" id="" class="btn btn-primary btn-sm"
-                                        onclick="">Download</button>
+                                    <a href="{{route('admin.district.teachers.appointment_letter', $teacher->id)}}" id="" class="btn btn-primary btn-sm"
+                                        onclick="">View</a>
+                                        @if ($teacher->staff_id === auth()->user()->staff_id)
+                                            <button type="button" id="" class="btn btn-primary btn-sm"onclick="">Download</button>
+                                        @endif
+
                                 </td>
                             </tr>
-                            {{-- @endforeach --}}
+                            @endif
 
                         </tbody>
                     </table>
@@ -158,33 +160,16 @@
 <div class="app-wrapper-footer">
     <div class="app-footer">
         <div class="app-footer__inner">
-            <div class="app-footer-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a href="javascript:void(0);" class="nav-link">
-                            Footer Link 1
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0);" class="nav-link">
-                            Footer Link 2
-                        </a>
-                    </li>
-                </ul>
-            </div>
             <div class="app-footer-right">
                 <ul class="nav">
                     <li class="nav-item">
                         <a href="javascript:void(0);" class="nav-link">
-                            Footer Link 3
+                            About
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:void(0);" class="nav-link">
-                            <div class="badge badge-success mr-1 ml-0">
-                                <small>NEW</small>
-                            </div>
-                            Footer Link 4
+                            Contact
                         </a>
                     </li>
                 </ul>

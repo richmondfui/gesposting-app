@@ -62,7 +62,11 @@
                                       <select name="district_id" class="form-control" id="">
                                           <option value="">Choose District</option>
                                           @foreach ($districts as $district)
-                                              <option value="{{ $district->id }}" {{($user->id == $district->user_id) ? 'selected' : ''}}>{{ $district->name }}</option>
+                                            @if($user->id == $district->user_id)
+                                                <option value="{{ $district->id }}" selected>{{ $district->name }}</option>
+                                            @else
+                                                <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                            @endif
                                           @endforeach
                                       </select>
                                       </div>

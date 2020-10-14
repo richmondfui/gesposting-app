@@ -80,6 +80,7 @@
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Name</th>
+                                        <th>Headteacher</th>
                                         <th>District</th>
                                         <th class="text-center"># of Teachers</th>
                                         <th class="text-center">Location</th>
@@ -91,6 +92,7 @@
                                     <tr>
                                         <td class="text-center text-muted">{{$school->id}}</td>
                                         <td>{{$school->name}}</td>
+                                        <td>{{$school->headteacher}}</td>
                                         <td>{{$school->district->name}}</td>
                                         <td class="text-center">{{$school->teachers()->count()}}</td>
                                         <td class="text-center">{{$school->location}}</td>
@@ -105,7 +107,7 @@
                                                     class="btn btn-success btn-sm">Manage</a>
 
                                                 <button type="button" id="PopoverCustomT-1"
-                                                    class="btn btn-primary btn-sm"
+                                                    class="btn btn-danger btn-sm"
                                                     onclick="confirm('{{ __("Are you sure you want to delete this school?") }}') ? this.parentElement.submit() : ''">Delete</button>
                                             </form>
                                         </td>

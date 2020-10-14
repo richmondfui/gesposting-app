@@ -116,7 +116,7 @@
                                                     <th class="text-center"># of Schools</th>
                                                     <th class="text-center"># of Teachers</th>
                                                     <th class="text-center">Location</th>
-                                                    {{-- <th class="text-center">Actions</th> --}}
+                                                    <th class="text-center">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -127,22 +127,10 @@
                                                     <td class="text-center">{{$district->schools()->count()}}</td>
                                                     <td class="text-center">{{$district->teachers()->count()}}</td>
                                                     <td class="text-center">{{$district->location}}</td>
-                                                    {{-- <td class="text-center">
-                                                        <form
-                                                            action="{{ route('admin.districts.destroy', $district->id) }}"
-                                                            method="post">
-                                                            @csrf
-                                                            @method('delete')
-
-                                                            <a href="{{route('admin.districts.edit', $district->id)}}"
-                                                                type="button" id="PopoverCustomT-1"
-                                                                class="btn btn-danger btn-sm">Edit</a>
-
-                                                            <button type="button" id="PopoverCustomT-1"
-                                                                class="btn btn-primary btn-sm"
-                                                                onclick="confirm('{{ __("Are you sure you want to delete this district?") }}') ? this.parentElement.submit() : ''">Delete</button>
-                                                        </form>
-                                                    </td> --}}
+                                                   <td class="text-center">
+                                                    <a href="{{route('admin.districts.edit', $district->id)}}" type="button"
+                                                        id="PopoverCustomT-1" class="btn btn-primary btn-sm">Edit</a>
+                                                   </td>
                                                 </tr>
                                                 @endforeach
 
@@ -207,8 +195,8 @@
                                                         <th>Name</th>
                                                         <th class="text-center">School</th>
                                                         <th class="text-center">District</th>
-                                                        <th class="text-center">Subject</th>
-                                                        {{-- <th class="text-center">Actions</th> --}}
+                                                        {{-- <th class="text-center">Subject</th> --}}
+                                                        <th class="text-center">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -220,24 +208,13 @@
                                                         </td>
                                                         <td class="text-center">{{$teacher->school->name ?? ''}}</td>
                                                         <td class="text-center">{{$teacher->district->name ?? ''}}</td>
-                                                        <td class="text-center"></td>
-                                                        {{-- <td class="text-center">
-                                                            <form
-                                                                action="{{ route('admin.district.teachers.destroy', $teacher->id) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @method('delete')
-
-                                                                <a href="{{route('admin.posting.teachers.edit', $teacher->id)}}"
+                                                        {{-- <td class="text-center"></td> --}}
+                                                        <td class="text-center">
+                                                                <a href="{{route('admin.district.teachers.show', $teacher->id)}}"
                                                                 type="button"
-                                                                id="PopoverCustomT-1" class="btn btn-danger
-                                                                btn-sm">Edit</a>
-
-                                                                <button type="button" id="PopoverCustomT-1"
-                                                                    class="btn btn-primary btn-sm"
-                                                                    onclick="confirm('{{ __("Are you sure you want to delete this teacher?") }}') ? this.parentElement.submit() : ''">Delete</button>
-                                                            </form>
-                                                        </td> --}}
+                                                                id="PopoverCustomT-1" class="btn btn-primary
+                                                                btn-sm">View</a>
+                                                        </td>
                                                     </tr>
                                                     @endforeach
 

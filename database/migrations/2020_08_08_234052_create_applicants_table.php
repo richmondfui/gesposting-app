@@ -32,6 +32,7 @@ class CreateApplicantsTable extends Migration
             $table->string('ghanaian_lang_2');
             $table->string('ghanaian_lang_3')->nullable();
             $table->string('college_attended');
+            $table->string('college_location');
             $table->date('college_from');
             $table->date('college_to');
             $table->text('college_certificate');

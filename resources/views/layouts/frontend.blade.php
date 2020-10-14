@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('fonts')}}/icomoon/style.css">
 
     <!-- Styles -->
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('css')}}/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('css')}}/jquery-ui.css">

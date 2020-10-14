@@ -33,7 +33,6 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $regions = Region::has('districts')->get();
-        // dd($regions);
 
         return view('backend.users.create', compact('roles', 'regions'));
     }
@@ -46,27 +45,22 @@ class UserController extends Controller
      */
     public function store(UserRequest $request, User $user)
     {
-        $user = $user->create($request->merge([
-            'password' => Hash::make($request->get('password'))
-        ])->all());
+        $user = $user->create(
+            $request->merge(
+                ['password' => Hash::make($request->get('password'))]
+            )->all()
+        );
 
         $user->roles()->sync($request->role_id);
 
-        $district = District::find($request->district_id);
-        $district->update(['user_id' => $user->id]);
+        if ($request->has('district_id') && !is_null($request->district_id)) {
+
+            $district = District::find($request->district_id);
+            $district->update(['user_id' => $user->id]);
+
+        }
 
         return redirect('admin/users')->withStatus('User created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -92,30 +86,27 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        // dd($request->all());
-
         // validated data from UserRequest
         $attributes = $request->validated();
 
         // if new password entered, hash and repalace old password
-        // else maintain old password
         if (!is_null($attributes['password'])) {
+
             $attributes['password'] = Hash::make($attributes['password']);
-        } else {
+        } else {    // else maintain old password
+
             $attributes['password'] = $user->password;
         }
+
         // update other user attributes
         $user->update($attributes);
 
         $user->roles()->sync($request->role_id);
 
-        if ($user->hasAnyRoles(['District HR'])) {
-     
-            // $district = District::find($request->district_id);
-
-            // if(!is_null($district)) {
-            //     $district->update(['user_id' => $user->id]);
-            // }
+        // Attach user(district HR) to a district
+        if ($request->has('district_id') && !is_null($request->district_id)) {
+            $district = District::find($request->district_id);
+            $district->update(['user_id' => $user->id]);
         }
 
         return redirect('admin/users')->withStatus('User updated successfully.');

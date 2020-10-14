@@ -28,9 +28,21 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-region', function($user) {
             return $user->hasAnyRoles(['Regional HR']);
         });
-        
+
         Gate::define('manage-district', function($user) {
             return $user->hasRole('District HR');
         });
+
+        // Gate::define('manage-region', function($user) {
+        //     return $user->hasAnyPermissions(
+        //         config("postings_config.user_permissions.region")
+        //     );
+        // });
+
+        // Gate::define('manage-district', function($user) {
+        //     return $user->hasAnyPermissions(
+        //         config("postings_config.user_permissions.district")
+        //     );
+        // });
     }
 }

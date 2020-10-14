@@ -75,15 +75,15 @@
                                                 @method('delete')
 
                                                 <a href="{{route('admin.users.edit', $user->id)}}" type="button"
-                                                    id="PopoverCustomT-1" class="btn btn-danger btn-sm">Edit</a>
+                                                    id="PopoverCustomT-1" class="btn btn-primary btn-sm">Edit</a>
 
                                                 <button type="button" id="PopoverCustomT-1"
-                                                    class="btn btn-primary btn-sm"
+                                                    class="btn btn-danger btn-sm"
                                                     onclick="confirm('{{ __("Are you sure you want to delete this user?") }}') ? this.parentElement.submit() : ''">Delete</button>
                                             </form>
                                             @else
                                             <a href="{{route('admin.users.edit', $user->id)}}" type="button"
-                                                id="PopoverCustomT-1" class="btn btn-danger btn-sm">Edit</a>
+                                                id="PopoverCustomT-1" class="btn btn-primary btn-sm">Edit</a>
                                             </a>
                                             @endif
                                         </td>

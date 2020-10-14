@@ -14,7 +14,7 @@
                             <i class="fas fa-eye icon-gradient bg-mean-fruit">
                             </i>
                         </div>
-                        <div>Posting Applicants
+                        <div>College Applicants
                         </div>
                     </div>
                     {{-- <div class="page-title-actions">
@@ -85,7 +85,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-card mb-3 card">
-                        <div class="card-header mb-2">Posting Applicants
+                        <div class="card-header mb-2">All Applicants
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -96,8 +96,9 @@
                                             <th>Staff ID</th>
                                             <th>Name</th>
                                             <th class="text-center">Gender</th>
+                                            <th class="text-center">College Attended</th>
                                             <th class="text-center">Course Offered</th>
-                                            <th class="text-center">Residential Address</th>
+                                            <th class="text-center">Prefered region</th>
                                             <th class="text-center">Status</th>
                                             <th class="text-center">Actions</th>
                                         </tr>
@@ -109,9 +110,10 @@
                                             <td class="">{{$applicant->staff_id}}</td>
                                             <td>{{$applicant->title.' '.$applicant->firstname.' '.$applicant->lastname}}</td>
                                             <td class="text-center">{{$applicant->gender}}</td>
+                                            <td class="text-center">{{$applicant->college_attended}}</td>
                                             <td class="text-center">{{$applicant->course_offered}}</td>
-                                            <td class="text-center">{{$applicant->residential_address}}</td>
-                                            <td class="text-center">
+                                            <td class="text-center">{{$applicant->region_1.', '.$applicant->region_2.', '.$applicant->region_3}}</td>
+                                            <td class="">
                                                 <div class="badge {{$applicant->status == 'posted' ? 'badge-success' : 'badge-warning' }}">
                                                     {{ $applicant->status}}
                                                 </div>
@@ -121,18 +123,22 @@
                                                     method="post">
                                                     @csrf
                                                     @method('delete')
-    
-                                                {{-- <a href="{{route('admin.posting.applicants.edit', $applicant->id)}}" type="button"
-                                                    id="PopoverCustomT-1" class="btn btn-danger btn-sm">Edit</a> --}}
-    
+
+                                                <a href="{{route('admin.posting.applicants.show', $applicant->id)}}" type="button"
+                                                    id="PopoverCustomT-1" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+
                                                     <button type="button" id="del-btn-{{$applicant->id}}"
-                                                        class="btn btn-primary btn-sm"
-                                                        onclick="confirm('{{ __("Are you sure you want to delete this applicant?") }}') ? this.parentElement.submit() : ''">Delete</button>
+                                                        class="btn btn-danger btn-sm"
+                                                        onclick="confirm('{{ __("Are you sure you want to delete this applicant?") }}') ? this.parentElement.submit() : ''">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>
                                         @endforeach
-    
+
                                     </tbody>
                                 </table>
                             </div>

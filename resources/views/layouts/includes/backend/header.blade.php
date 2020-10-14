@@ -34,32 +34,55 @@
     </div>
     <div class="app-header__content">
 
-        @guest
-        <div class="app-header-left">
-            <ul class="header-menu nav">
-                <li class="nav-item">
-                    <a href="{{url('/')}}" class="nav-link">
-                        HOME
-                    </a>
-                </li>
-            </ul>
-        </div>
-        @endguest
-
         @auth
         <div class="app-header-left">
             <ul class="header-menu nav">
                 <li class="nav-item">
                     <a href="{{url('/')}}" class="nav-link">
-                        HOME
+                        Home
                     </a>
                 </li>
+                @can('manage-region')
+
+                <li class="nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        Regional HR
+                    </a>
+                </li>
+                @elsecan('manage-district')
+
                 <li class="nav-item">
                     <a href="javascript:void(0);" class="nav-link">
                         {{auth()->user()->district['name'] ?? ''}}
                     </a>
                 </li>
+                @endcan
             </ul>
+            <div class="widget-content p-0">
+                <div class="widget-content-wrapper">
+                    <div class="widget-content-left">
+                        <div class="btn-group">
+                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                Create
+                                <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                            </a>
+                            <div tabindex="-1" role="menu" aria-hidden="true"
+                                class="dropdown-menu dropdown-menu-center">
+                                @can('manage-region')
+
+                                <a href="{{route('admin.users.create')}}" class="dropdown-item">User</a>
+                                <a href="{{route('admin.roles.create')}}" class="dropdown-item">Role</a>
+                                <a href="{{route('admin.permissions.create')}}" class="dropdown-item">Permission</a>
+                                <a href="{{route('admin.districts.create')}}" class="dropdown-item">District</a>
+
+                                @elsecan('manage-district')
+                                <a href="{{route('admin.district.schools.create')}}" class="dropdown-item">School</a>
+                                @endcan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="app-header-right">
             <div class="header-btn-lg pr-0">

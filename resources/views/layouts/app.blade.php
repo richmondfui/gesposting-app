@@ -20,6 +20,7 @@
     {{-- <link rel="stylesheet" href="{{asset('backend')}}/plugins/datatables/datatables.min.css"> --}}
     <link rel="stylesheet" href="{{asset('backend')}}/plugins/datatables/dataTables.bootstrap4.min.css">
     <link href="{{asset('backend')}}/main.css" rel="stylesheet">
+    <link href="{{asset('backend')}}/backend_style.css" rel="stylesheet">
 </head>
 
 <body>

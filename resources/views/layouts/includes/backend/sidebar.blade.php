@@ -129,6 +129,14 @@
                         Schools
                     </a>
                 </li>
+                <li class="app-sidebar__heading">Staff Management</li>
+                <li>
+                    <a href="{{route('admin.district.teachers.start_posting')}}"
+                        class="{{(isset($activePage) && $activePage == 'p-teachers') ? 'mm-active' : ''}}">
+                        <i class="metismenu-icon fas fa-users"></i>
+                        Post Teachers
+                    </a>
+                </li>
                 <li>
                     <a href="{{route('admin.district.teachers.index')}}"
                         class="{{(isset($activePage) && $activePage == 'teachers') ? 'mm-active' : ''}}">

@@ -47,7 +47,7 @@ class ApplicantPostedSuccessfully extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Posting Successful Message')
+            ->subject('Posted Successfully')
             ->greeting('Hello '.$this->name.',')
             ->line($this->message);
     }

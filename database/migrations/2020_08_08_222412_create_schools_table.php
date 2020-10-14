@@ -18,6 +18,7 @@ class CreateSchoolsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('district_id');
             $table->string('name')->unique();
+            $table->string('headteacher');
             $table->string('location');
             $table->timestamps();
 

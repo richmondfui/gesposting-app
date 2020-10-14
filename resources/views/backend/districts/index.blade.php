@@ -116,11 +116,11 @@
                                                 @csrf
                                                 @method('delete')
 
-                                            <a href="{{route('admin.districts.edit', $district->id)}}" type="button"
-                                                id="PopoverCustomT-1" class="btn btn-danger btn-sm">Edit</a>
+                                                <a href="{{route('admin.districts.edit', $district->id)}}" type="button"
+                                                    id="PopoverCustomT-1" class="btn btn-primary btn-sm">Edit</a>
 
                                                 <button type="button" id="PopoverCustomT-1"
-                                                    class="btn btn-primary btn-sm"
+                                                    class="btn btn-danger btn-sm"
                                                     onclick="confirm('{{ __("Are you sure you want to delete this district?") }}') ? this.parentElement.submit() : ''">Delete</button>
                                             </form>
                                         </td>

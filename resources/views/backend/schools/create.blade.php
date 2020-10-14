@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-               
+
                     <div class="row">
                         <div class="col-md-12">
                          <div class="main-card mb-3 card">
@@ -28,6 +28,9 @@
                                    @csrf
                                       <div class="position-relative row form-group"><label for="schoolName" class="col-sm-2 col-form-label">School Name</label>
                                           <div class="col-sm-10"><input name="name" id="schoolName" placeholder="Gomoa D/A Primary" type="text" class="form-control" required></div>
+                                      </div>
+                                      <div class="position-relative row form-group"><label for="schoolHeadteacher" class="col-sm-2 col-form-label">Headteacher's Name</label>
+                                          <div class="col-sm-10"><input name="headteacher" id="schoolHeadteacher" placeholder="Mr. Asante Bismark" type="text" class="form-control" required></div>
                                       </div>
                                       <div class="position-relative row form-group"><label for="schoolDistID" class="col-sm-2 col-form-label">District</label>
                                           <div class="col-sm-10">

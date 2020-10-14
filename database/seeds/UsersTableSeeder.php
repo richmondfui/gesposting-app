@@ -72,17 +72,6 @@ class UsersTableSeeder extends Seeder
             ],
         ]);
 
-
-        DB::table('districts')->insert([
-            [
-                'name' => 'Juaboso District',
-                'region_id' => 4,
-                'user_id' => 2,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]
-        ]);
-
         // Attach Regional HR role to the first user
         $rHR = \App\User::first();
         $rHR->roles()->sync(1);

@@ -102,7 +102,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-card mb-3 card">
-                        <div class="card-header">Active Users
+                        <div class="card-header">Tabbed Overview
                             <div class="btn-actions-pane-right">
                                 <ul class="tabs-animated-shadow tabs-animated nav mt-3">
                                     <li class="nav-item">
@@ -131,7 +131,7 @@
                                                     <th>Staff ID</th>
                                                     <th>Name</th>
                                                     <th class="text-center">School</th>
-                                                    <th class="text-center">Subject</th>
+                                                    <th class="text-center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -141,7 +141,10 @@
                                                     <td class="">{{$teacher->staff_id}}</td>
                                                     <td>{{$teacher->title.' '.$teacher->firstname.' '.$teacher->lastname}}</td>
                                                     <td class="text-center">{{$teacher->school->name ?? ''}}</td>
-                                                    <td class="text-center"></td>
+                                                    <td class="text-center">
+                                                        <a href="{{route('admin.district.teachers.show', $teacher->id)}}" type="button"
+                                                            id="PopoverCustomT-1" class="btn btn-primary btn-sm">View</a>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
 
@@ -156,9 +159,11 @@
                                                 <tr>
                                                     <th class="text-center">#</th>
                                                     <th>Name</th>
+                                                    <th>Headteacher</th>
                                                     <th>District</th>
                                                     <th class="text-center"># of Teachers</th>
                                                     <th class="text-center">Location</th>
+                                                    <th class="text-center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -166,9 +171,15 @@
                                                 <tr>
                                                     <td class="text-center text-muted">{{$school->id}}</td>
                                                     <td>{{$school->name}}</td>
+                                                    <td>{{$school->headteacher}}</td>
                                                     <td>{{$school->district->name}}</td>
                                                     <td class="text-center">{{$school->teachers()->count()}}</td>
                                                     <td class="text-center">{{$school->location}}</td>
+                                                    <td class="text-center">
+                                                        <a href="{{route('admin.district.schools.edit', $school->id)}}"
+                                                            type="button" id="PopoverCustomT-1"
+                                                            class="btn btn-success btn-sm">Manage</a>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
 

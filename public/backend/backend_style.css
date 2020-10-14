@@ -1,0 +1,57 @@
+.letter-print-area {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+.card.letter-print-area .card-body {
+    padding: 0 .5rem;
+}
+@media print {
+    /* Hide a Unnecessary div while print invoice*/
+    html, body {
+      visibility: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .letter-print-area {
+      visibility: visible;
+      page-break-after: auto;
+      padding: 0;
+    }
+    .letter-print-area .divider {
+      margin: .5rem 0 !important;
+    }
+    .letter-action-wrapper,
+    .app-header,
+    .navbar,
+    .app-sidebar,
+    .app-page-title,
+    .app-wrapper-footer {
+      display: none;
+    }
+    .horizontal-menu.navbar-sticky .content > .content-wrapper {
+      margin-top: 0 !important;
+    }
+    html body.navbar-sticky .app-content .content-wrapper,
+    body.vertical-layout.vertical-menu-modern.menu-collapsed .app-content {
+      margin: 0;
+      padding: 0;
+    }
+    .content-header,
+    .main-menu {
+      display: none;
+    }
+    /* card shadow remove while printing invoice*/
+    .card {
+      box-shadow: none;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .card .card-content {
+      padding: 0 !important;
+    }
+    /* table border added while printing invoice*/
+    table th,
+    table td {
+      border: 1px solid #DFE3E7;
+    }
+  }

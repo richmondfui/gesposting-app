@@ -31,11 +31,22 @@
                                         class="col-sm-2 col-form-label">User Name</label>
                                     <div class="col-sm-10"><input name="name" id="name" placeholder="Nii Amartey"
                                             type="text" class="form-control" required></div>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="position-relative row form-group"><label for=""
                                         class="col-sm-2 col-form-label">Email</label>
                                     <div class="col-sm-10"><input name="email" id="" placeholder="admin@admin.com"
-                                            type="email" class="form-control" required></div>
+                                            type="email" class="form-control  @error('email') danger @enderror" required></div>
+
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                 </div>
                                 <div class="position-relative row form-group"><label for=""
                                         class="col-sm-2 col-form-label">Roles</label>
@@ -45,7 +56,9 @@
                                             <input class="form-check-input" name="role_id[]" type="checkbox"
                                                 value="{{$role->id}}">
                                             <label class="form-check-label"
-                                                for="inlineCheckbox1">{{$role->name}}</label>
+                                                for="inlineCheckbox1">{{$role->name}}
+
+                                            </label>
                                         </div>
                                         @endforeach
                                     </div>
@@ -58,7 +71,7 @@
                                             <option value="">Choose District</option>
                                             @foreach ($regions as $region)
                                             <optgroup label="{{$region->name. __(' Region')}}">
-                                                @foreach ($region->districts as $district)
+                                                @foreach ($region->districts->where('user_id', null) as $district)
                                                 <option value="{{ $district->id }}">{{ $district->name }}</option>
                                                 @endforeach
                                             </optgroup>

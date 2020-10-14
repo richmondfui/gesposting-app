@@ -24,9 +24,6 @@ class FrontendController extends Controller
      */
     public function postingPage()
     {
-        // $bytes = random_bytes(5);
-        // dd(bin2hex($bytes));
-
         return view('posting');
     }
 
@@ -50,23 +47,31 @@ class FrontendController extends Controller
      */
     public function storeApplicant(ApplicantRequest $request, Applicant $applicant)
     {
-        $code = random_bytes(5);
+        // Validate applicant details before saving
         $data = $request->validated();
+
+        // Generate unique code for applicant and add to validated inputs
+        $code = random_bytes(5);
         $data['code'] = bin2hex($code);
-        // dd($data, $request->validated());
-        
+
+        // Save to database
         $applicant = $applicant->create($data);
 
+        // Fire off an email to the new applicant
         Mail::to($applicant->email)
             ->send(new AppliedSuccessfully($applicant));
 
+        // Redirect with a status message to applicant in the browser
         return redirect()->route('posting.register.message')
-            ->with('status', 'Congratulations!, you have successfully applied for posting into the GES. Use this code: ' .
-                $applicant->code . ' to check your posting status. We\'ve sent you an email with applicant details. Thank you.');
+            ->with('status', 'Congratulations!, you have successfully applied for posting into the GES. Use this code: <b>' .
+                $applicant->code . '</b> to check your posting status. We\'ve sent you an email with applicant details. Thank you.');
     }
 
     /**
      * Response message after storing a new applicant
+     *
+     * @return Illuminate\Http\Response
+     *
      */
     public function storeMessage()
     {
@@ -75,6 +80,10 @@ class FrontendController extends Controller
 
     /**
      * Check an applicant's posting status
+     *
+     * @param Illuminate\Http\Request $request
+     * @return Illuminate\Http\Response
+     *
      */
     public function postingCheck(Request $request)
     {
@@ -83,25 +92,35 @@ class FrontendController extends Controller
         if (isset($applicant)) {
             if ($applicant->status == 'posted') {
                 $teacher = Teacher::where('staff_id', $applicant->staff_id)->first();
-                // dd($teacher->district->name);
+
+                $message = "Congratulations! $applicant->title $applicant->firstname, you have been successfully posted
+                to the " . $teacher->district->name . ". An email with your appointment letter has been sent to your mail
+                account. Do visit the district Directorate for further engagements. Thank you.";
+
                 return redirect()->route('posting.check_status.message')
-                    ->with('status', "Congratulations! $applicant->title $applicant->firstname, you have been successfully posted
-                    to the " . $teacher->district->name . ". An email with your appointment letter has been sent to your mail account. Do visit the district Directorate
-                    for further engagements. Thank you.");
+                    ->with('status', $message);
             } else {
+
                 return redirect()->route('posting.check_status.message')
                     ->with('status', 'Sorry, you have not been posted yet. Kindly check again later. Thank you.');
             }
         } else {
-            return redirect()->back()->withStatus('Invalid code');
+
+            return redirect()->back()->withStatus('Sorry, invalid applicant code entered.');
         }
     }
 
+    /**
+     * Response message checking status
+     *
+     * @return Illuminate\Http\Response
+     *
+     */
     public function postingChecked()
     {
-
         return view('posting_status');
     }
+
 
     public function transferForm()
     {

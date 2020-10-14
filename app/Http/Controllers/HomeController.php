@@ -10,24 +10,12 @@ use App\Teacher;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
+     * Show the regional HR's dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-
-        // dd(request());
         $districts = District::all();
         $schools = School::all();
         $teachers = Teacher::all();
@@ -37,7 +25,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the district HR's dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

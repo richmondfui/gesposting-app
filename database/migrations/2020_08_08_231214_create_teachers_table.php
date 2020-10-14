@@ -29,11 +29,12 @@ class CreateTeachersTable extends Migration
             $table->string('email')->unique();
             $table->string('mobile_number');
             $table->string('ssnit_number');
-            $table->string('college_attended')->nullable();
-            $table->date('college_from')->nullable();
-            $table->date('college_to')->nullable();
+            $table->string('college_attended');
+            $table->string('college_location');
+            $table->date('college_from');
+            $table->date('college_to');
             $table->text('college_certificate');
-            $table->string('course_offered')->nullable();
+            $table->string('course_offered');
             $table->string('staff_id')->unique();
             $table->string('registered_number')->unique();
             $table->timestamps();

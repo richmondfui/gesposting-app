@@ -19,6 +19,12 @@ class CreateDistrictsTable extends Migration
             $table->unsignedBigInteger('region_id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
+            $table->text('director');
+            $table->text('assist_director')->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('ref')->nullable();
             $table->string('location')->nullable();
             $table->timestamps();
 

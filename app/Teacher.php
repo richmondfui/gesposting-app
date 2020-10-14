@@ -8,7 +8,7 @@ class Teacher extends Model
 {
     protected $fillable = ['district_id', 'school_id', 'title', 'firstname', 'lastname', 'othername',
         'gender', 'dob', 'marital_status', 'nationality', 'residential_address', 'email', 'mobile_number',
-        'ssnit_number', 'college_attended', 'college_from', 'college_to', 'college_certificate', 'course_offered',
+        'ssnit_number', 'college_attended', 'college_location', 'college_from', 'college_to', 'college_certificate', 'course_offered',
         'staff_id', 'registered_number',
     ];
 
